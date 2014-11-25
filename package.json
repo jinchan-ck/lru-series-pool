@@ -1,0 +1,37 @@
+{
+  "name": "lru-series-pool",
+  "description": "A pool that contains concurrent series queue",
+  "main": "./lib/lru-series-pool.js",
+  "author": "Sweetvvck",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sweetvvck/lru-series-pool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sweetvvck/lru-series-pool/issues"
+  },
+  "devDependencies": {
+    "tape": "2.12.3",
+    "debug": "0.8.1"
+  },
+  "homepage": "https://github.com/sweetvvck/lru-series-pool",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "tape": "^2.12.3",
+    "debug": "^0.8.1",
+    "async": "0.9.0",
+    "node-lru": "0.0.1"
+  },
+  "keywords": [
+    "lru",
+    "series",
+    "pool"
+  ],
+  "license": "MIT"
+}
