@@ -2,6 +2,11 @@ var test = require('tape');
 
 var LsPool = require('../lib/lru-series-pool');
 
+var lsPoolOptions = {
+  "concurrency": 5,
+  "timeout": 30000
+};
+
 function worker(task, callback) {
   setTimeout(function () {
     callback(task.key + ': ' + task.value);
@@ -13,7 +18,7 @@ function taskCallback(key) {
 }
 
 test('test running and left', function (t) {
-  var lsPool = LsPool.generatePool(worker, 5, 5);
+  var lsPool = LsPool.generatePool(worker, lsPoolOptions, 5);
   lsPool.push({value: 'task1', key: 'user1'}, taskCallback);
   lsPool.push({value: 'task2', key: 'user2'}, taskCallback);
   lsPool.push({value: 'task3', key: 'user3'}, taskCallback);
@@ -32,7 +37,7 @@ test('test running and left', function (t) {
 });
 
 test('test add to working queue', function (t) {
-  var lsPool = LsPool.generatePool(worker, 5, 5);
+  var lsPool = LsPool.generatePool(worker, lsPoolOptions, 5);
   lsPool.push({value: 'task1', key: 'user1'}, taskCallback);
   lsPool.push({value: 'task2', key: 'user2'}, taskCallback);
   lsPool.push({value: 'task3', key: 'user3'}, taskCallback);
